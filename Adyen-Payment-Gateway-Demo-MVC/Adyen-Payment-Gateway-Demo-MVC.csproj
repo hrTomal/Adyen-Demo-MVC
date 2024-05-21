@@ -243,6 +243,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentByAPIController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\StaticDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -334,6 +335,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\PaymentByAPI\" />
+    <Folder Include="Views\StaticData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
