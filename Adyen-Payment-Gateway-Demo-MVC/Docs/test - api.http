@@ -1,0 +1,21 @@
+﻿
+
+
+@base_url=https://localhost:44389/api/paymentbyapi
+
+GET {{base_url}}/GetPaymentMethods
+
+###
+POST {{base_url}}/PaymentSession
+Content-Type: application/json
+
+{
+  "merchantAccount": "YOUR_MERCHANT_ACCOUNT",
+  "amount": {
+    "value": 100,
+    "currency": "EUR"
+  },
+  "returnUrl": "https://your-company.com/checkout?shopperOrder=12xy..",
+  "reference": "YOUR_PAYMENT_REFERENCE",
+  "countryCode": "NL"
+}

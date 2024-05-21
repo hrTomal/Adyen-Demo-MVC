@@ -1,0 +1,33 @@
+﻿
+
+
+@base_url=https://localhost:44389/api/payment
+
+GET {{base_url}}/GetPaymentMethods
+
+###
+POST {{base_url}}/InitiatePayment
+Content-Type: application/json
+
+{
+  "reference": "YourOrderReference",
+  "amount": {
+    "currency": "EUR",
+    "value": 1000
+  },
+  "paymentMethod": {
+    "type": "scheme",
+    "number": "4111111111111111",
+    "expiryMonth": "10",
+    "expiryYear": "2023",
+    "holderName": "John Doe",
+    "cvc": "737"
+  },
+  "returnUrl": "https://yourwebsite.com/return",
+  "shopperIP": "192.168.0.1",
+  "channel": "Web",
+  "browserInfo": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36",
+    "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+  }
+}
