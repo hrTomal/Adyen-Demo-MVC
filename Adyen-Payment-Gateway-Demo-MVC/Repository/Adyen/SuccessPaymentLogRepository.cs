@@ -17,10 +17,18 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Repository.Adyen
             _context = new DefaultDbContext();
         }
 
-        public async void AddSuccessPaymentLog(SuccessPaymentLog log)
+        public async Task AddSuccessPaymentLog(SuccessPaymentLog log)
         {
-            _context.SuccessPaymentLogs.Add(log);
-            _context.SaveChangesAsync();
+            try
+            {
+                _context.SuccessPaymentLogs.Add(log);
+                _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public List<SuccessPaymentLog> GetSuccessPaymentLogs()
@@ -28,12 +36,13 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Repository.Adyen
             return _context.SuccessPaymentLogs.ToList();
         }
 
-        public async void UpdateRefundAmountSuccessPaymentLog(SuccessPaymentLog updatedLog)
+        public async Task UpdateRefundAmountSuccessPaymentLog(SuccessPaymentLog updatedLog)
         {
             var existingLog = _context.SuccessPaymentLogs.FirstOrDefault(log => log.pspReference == updatedLog.pspReference);
             if (existingLog != null)
             {
-                existingLog.refundAmount = updatedLog.refundAmount;
+
+                existingLog.refundAmount = existingLog.refundAmount + updatedLog.refundAmount;
                 await _context.SaveChangesAsync();
             }
         }

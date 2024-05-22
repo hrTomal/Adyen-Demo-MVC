@@ -44,7 +44,7 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             }
             var request = JsonConvert.DeserializeObject<PaymentRequest>(requestBody);
 
-            var response = new InitiatePayment().InitiateAPayment(request);
+            var response = new InitiatePayment().InitiateAPaymentAsync(request);
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
         

@@ -37,7 +37,7 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
                         SuccessPaymentLog log = new SuccessPaymentLog();
                         log.pspReference = request.Reference;
                         log.refundAmount = request.Amount.Value;
-                        new SuccessPaymentLogRepository().UpdateRefundAmountSuccessPaymentLog(log);
+                        await new SuccessPaymentLogRepository().UpdateRefundAmountSuccessPaymentLog(log);
 
                         return JsonConvert.DeserializeObject<RefundResponse>(responseBody);
                     }

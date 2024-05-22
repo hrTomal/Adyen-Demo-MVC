@@ -13,7 +13,7 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
 {
     public class InitiatePayment
     {
-        public dynamic InitiateAPayment(PaymentRequest request)
+        public async Task<dynamic> InitiateAPaymentAsync(PaymentRequest request)
         {
             try
             {
@@ -54,7 +54,8 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
                     log.currency = response.Amount.Currency;
                     log.paymentMethodBrand = response.PaymentMethod.Brand;
                     log.paymentMethodType = response.PaymentMethod.Type;
-                   new SuccessPaymentLogRepository().AddSuccessPaymentLog(log);
+                    log.refundAmount = 0;
+                    await new SuccessPaymentLogRepository().AddSuccessPaymentLog(log);
                 }
 
                 return response;
