@@ -230,6 +230,7 @@
     <Compile Include="Application\Features\AdyenPayments\AdyenAPI\PaymentModification.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenAPI\PaymentSession.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\GetMerchantPaymentMethods.cs" />
+    <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\GetSuccessPaymentLogs.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\InitiatePayment.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\ProcessRefund.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\SubmitAdditionalPaymentDetails.cs" />
@@ -254,6 +255,10 @@
     <Compile Include="Migrations\202405161132455_InitialCreate2.cs" />
     <Compile Include="Migrations\202405161132455_InitialCreate2.Designer.cs">
       <DependentUpon>202405161132455_InitialCreate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405220648035_check.cs" />
+    <Compile Include="Migrations\202405220648035_check.Designer.cs">
+      <DependentUpon>202405220648035_check.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdyenPayments\Common\Amount.cs" />
@@ -370,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202405161132455_InitialCreate2.resx">
       <DependentUpon>202405161132455_InitialCreate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405220648035_check.resx">
+      <DependentUpon>202405220648035_check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

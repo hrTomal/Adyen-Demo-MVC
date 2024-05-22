@@ -70,5 +70,13 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             var response = await new SubmitAdditionalPaymentDetails().SubmitAdditionalDetails(request);
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
+        
+        [HttpGet]
+        [Route("GetSuccessPaymentLogs")]
+        public ActionResult GetSuccessPaymentLogs()
+        {
+            var response = new GetSuccessPaymentLogs().GetSuccessPaymentLogList();
+            return Content(JsonConvert.SerializeObject(response), "application/json");
+        }
     }
 }

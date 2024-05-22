@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System;
 using Adyen_Payment_Gateway_Demo_MVC.Models.AdyenPayments.Response;
+using Adyen_Payment_Gateway_Demo_MVC.Repository.Adyen;
+using Adyen_Payment_Gateway_Demo_MVC.Models.AdyenPayments.Entity;
 
 namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.AdyenAPI
 {
@@ -32,6 +34,11 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
                     string responseBody = await response.Content.ReadAsStringAsync();
                     if (response.IsSuccessStatusCode)
                     {
+                        SuccessPaymentLog log = new SuccessPaymentLog();
+                        log.pspReference = request.Reference;
+                        log.refundAmount = request.Amount.Value;
+                        new SuccessPaymentLogRepository().UpdateRefundAmountSuccessPaymentLog(log);
+
                         return JsonConvert.DeserializeObject<RefundResponse>(responseBody);
                     }
                     else
