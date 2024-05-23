@@ -20,7 +20,9 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             {
                 new Dictionary<string, string> { { "label", "Australia" }, { "value", "AU" }, { "currency", "AUD" }},
                 new Dictionary<string, string> { { "label", "Netherland" }, { "value", "NL" }, { "currency", "EUR" } },
-                new Dictionary<string, string> { { "label", "United States" }, { "value", "US" }, { "currency", "USD" } }
+                new Dictionary<string, string> { { "label", "United States" }, { "value", "US" }, { "currency", "USD" } },
+                new Dictionary<string, string> { { "label", "United Kingdom" }, { "value", "GB" }, { "currency", "GBP" } },
+                new Dictionary<string, string> { { "label", "Ireland" }, { "value", "IE" }, { "currency", "EUR" } },
             };
 
             return Content(JsonConvert.SerializeObject(countries), "application/json");

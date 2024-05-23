@@ -25,7 +25,8 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
                     Amount = amountObject,
                     CountryCode = request.CountryCode,
                     MerchantAccount = StaticVariablesConfig.GetAdyenMerchantCode(),
-                    Channel = PaymentMethodsRequest.ChannelEnum.Web
+                    Channel = PaymentMethodsRequest.ChannelEnum.Web,
+                    //AllowedPaymentMethods = new List<string> { "scheme", "trustly" }
                 };
 
                 var service = new PaymentsService(client);
