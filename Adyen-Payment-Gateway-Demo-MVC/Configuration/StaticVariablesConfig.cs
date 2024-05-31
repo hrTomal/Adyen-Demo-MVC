@@ -38,5 +38,29 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Configuration
 
             return merchantCode;
         }
+
+        public static string GetBalancePlatformApiKey()
+        {
+            string apiKey = ConfigurationManager.AppSettings["AdyenBalancePlatformApiKey"];
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new ApplicationException("Balance Platform API key not found in the configuration file.");
+            }
+
+            return apiKey;
+        }
+
+        internal static string GetLegalEnityClient()
+        {
+            string apiKey = ConfigurationManager.AppSettings["AdyenLegalEntityApiKey"];
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new ApplicationException("Balance Platform API key not found in the configuration file.");
+            }
+
+            return apiKey;
+        }
     }
 }

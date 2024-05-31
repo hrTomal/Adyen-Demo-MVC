@@ -234,6 +234,10 @@
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\InitiatePayment.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\ProcessRefund.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\SubmitAdditionalPaymentDetails.cs" />
+    <Compile Include="Application\Features\BalancePlatform\AccountHolders.cs" />
+    <Compile Include="Application\Features\BalancePlatform\BalanceAccounts.cs" />
+    <Compile Include="Application\Features\BalancePlatform\LegalEntities.cs" />
+    <Compile Include="Application\Features\BalancePlatform\GetBalancePlatform.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -241,6 +245,7 @@
     <Compile Include="Configuration\AdyenClientService.cs" />
     <Compile Include="Configuration\DefaultDbContext.cs" />
     <Compile Include="Configuration\StaticVariablesConfig.cs" />
+    <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentByAPIController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
@@ -266,6 +271,7 @@
     <Compile Include="Models\AdyenPayments\Entity\RefundRequestSuccess.cs" />
     <Compile Include="Models\AdyenPayments\Entity\SuccessPaymentLog.cs" />
     <Compile Include="Models\AdyenPayments\LibraryRequests\PaymentMethodsReq.cs" />
+    <Compile Include="Models\AdyenPayments\Platform\OnBoardingLinkInfoWithId.cs" />
     <Compile Include="Models\AdyenPayments\Request\CheckCardDetailsRequest.cs" />
     <Compile Include="Models\AdyenPayments\Request\PaymentDetailsSubmitRequest.cs" />
     <Compile Include="Models\AdyenPayments\Request\PaymentMethodsByAmountCountryReq.cs" />
@@ -339,6 +345,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BalancePlatform\" />
     <Folder Include="Views\PaymentByAPI\" />
     <Folder Include="Views\StaticData\" />
   </ItemGroup>

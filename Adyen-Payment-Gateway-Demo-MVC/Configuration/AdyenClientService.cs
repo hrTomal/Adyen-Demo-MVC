@@ -24,5 +24,31 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Configuration
         {
             return new RequestOptions { IdempotencyKey = Guid.NewGuid().ToString() };
         }
+
+        public Client CreateBalancePlatformClient()
+        {
+            var apiKey = StaticVariablesConfig.GetBalancePlatformApiKey();
+
+            var config = new Config()
+            {
+                XApiKey = apiKey,
+                Environment = Environment.Test
+            };
+
+            return new Client(config);
+        }
+        
+        public Client CreateLegalEnityClient()
+        {
+            var apiKey = StaticVariablesConfig.GetLegalEnityClient();
+
+            var config = new Config()
+            {
+                XApiKey = apiKey,
+                Environment = Environment.Test
+            };
+
+            return new Client(config);
+        }
     }
 }
