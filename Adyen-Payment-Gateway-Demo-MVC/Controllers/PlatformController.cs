@@ -14,10 +14,10 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
     public class PlatformController : Controller
     {
         [HttpGet]
-        [Route("GetBalancePlatform/{id}")]
-        public ActionResult GetBalancePlatform(string id)
+        [Route("GetBalancePlatform/{platformId}")]
+        public ActionResult GetBalancePlatform(string platformId)
         {
-            var response = new GetBalancePlatform().BalancePlatform(id);
+            var response = new GetBalancePlatform().BalancePlatform(platformId);
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
 
@@ -60,21 +60,6 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
         }
         
         [HttpPost]
-        [Route("AddBalanceAccount")]
-        public async Task<ActionResult> AddBalanceAccount()
-        {
-            string requestBody;
-            using (var reader = new StreamReader(Request.InputStream))
-            {
-                requestBody = await reader.ReadToEndAsync();
-            }
-            var request = JsonConvert.DeserializeObject<BalanceAccountInfo>(requestBody);
-
-            var response = await new BalanceAccounts().CreateBalanceAccount(request);
-            return Content(JsonConvert.SerializeObject(response), "application/json");
-        }
-        
-        [HttpPost]
         [Route("GenerateOnboardingLink")]
         public async Task<ActionResult> GenerateOnboardingLink()
         {
@@ -89,7 +74,20 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
 
+        [HttpPost]
+        [Route("AddBalanceAccount")]
+        public async Task<ActionResult> AddBalanceAccount()
+        {
+            string requestBody;
+            using (var reader = new StreamReader(Request.InputStream))
+            {
+                requestBody = await reader.ReadToEndAsync();
+            }
+            var request = JsonConvert.DeserializeObject<BalanceAccountInfo>(requestBody);
 
+            var response = await new BalanceAccounts().CreateBalanceAccount(request);
+            return Content(JsonConvert.SerializeObject(response), "application/json");
+        }
 
     }
 }
