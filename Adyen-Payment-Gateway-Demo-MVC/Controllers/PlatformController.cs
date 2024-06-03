@@ -88,6 +88,20 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             var response = await new BalanceAccounts().CreateBalanceAccount(request);
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
+        
+        [HttpPost]
+        [Route("CreateLegalEntityAndGenerateLink")]
+        public async Task<ActionResult> CreateLegalEntityAndGenerateLink()
+        {
+            string requestBody;
+            using (var reader = new StreamReader(Request.InputStream))
+            {
+                requestBody = await reader.ReadToEndAsync();
+            }
+            var request = JsonConvert.DeserializeObject<CustomAccountCreationDetails>(requestBody);
+            var response = await new CustomAccountCreation().CreateAccount(request);
+            return Content(JsonConvert.SerializeObject(response), "application/json");
+        }
 
     }
 }
