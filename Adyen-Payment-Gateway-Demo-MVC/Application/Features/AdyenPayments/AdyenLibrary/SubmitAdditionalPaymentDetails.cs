@@ -34,7 +34,7 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenPayments.Adye
                     log.paymentMethodBrand = response.PaymentMethod.Brand;
                     log.paymentMethodType = response.PaymentMethod.Type;
                     log.refundAmount = 0;
-                    await new SuccessPaymentLogRepository().AddSuccessPaymentLog(log);
+                    //await new SuccessPaymentLogRepository().AddSuccessPaymentLog(log);
                 }
 
                 return response;

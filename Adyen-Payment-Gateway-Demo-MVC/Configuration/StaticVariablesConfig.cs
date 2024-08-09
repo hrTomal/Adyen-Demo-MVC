@@ -62,5 +62,29 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Configuration
 
             return apiKey;
         }
+
+        public static string GetAdyenHmacKey()
+        {
+            string apiKey = ConfigurationManager.AppSettings["AdyenHmacKey"];
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new ApplicationException("Adyen Hmac Key not found in the configuration file.");
+            }
+
+            return apiKey;
+        }
+        
+        public static string GetAdyenBalancePlatformHmacKey()
+        {
+            string apiKey = ConfigurationManager.AppSettings["AdyenBalancePlatformHmacKey"];
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new ApplicationException("Adyen Balance Platform Hmac Key not found in the configuration file.");
+            }
+
+            return apiKey;
+        }
     }
 }

@@ -48,6 +48,21 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
         
+        [HttpPost]
+        [Route("Tokenization")]
+        public async Task<ActionResult> Tokenization()
+        {
+            string requestBody;
+            using (var reader = new StreamReader(Request.InputStream))
+            {
+                requestBody = await reader.ReadToEndAsync();
+            }
+            var request = JsonConvert.DeserializeObject<PaymentRequest>(requestBody);
+
+            var response = new InitiatePayment().InitiateTokenization(request);
+            return Content(JsonConvert.SerializeObject(response), "application/json");
+        }
+        
         //[HttpPost]
         //[Route("InitiatePayment_test")]
         //public async Task<ActionResult> InitiatePayment_test(PaymentRequest request)
@@ -71,12 +86,12 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
             return Content(JsonConvert.SerializeObject(response), "application/json");
         }
         
-        [HttpGet]
-        [Route("GetSuccessPaymentLogs")]
-        public ActionResult GetSuccessPaymentLogs()
-        {
-            var response = new GetSuccessPaymentLogs().GetSuccessPaymentLogList();
-            return Content(JsonConvert.SerializeObject(response), "application/json");
-        }
+        //[HttpGet]
+        //[Route("GetSuccessPaymentLogs")]
+        //public ActionResult GetSuccessPaymentLogs()
+        //{
+        //    var response = new GetSuccessPaymentLogs().GetSuccessPaymentLogList();
+        //    return Content(JsonConvert.SerializeObject(response), "application/json");
+        //}
     }
 }
