@@ -235,6 +235,7 @@
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\Modification.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\ProcessRefund.cs" />
     <Compile Include="Application\Features\AdyenPayments\AdyenLibrary\SubmitAdditionalPaymentDetails.cs" />
+    <Compile Include="Application\Features\AdyenWebhooks\ReceiveBalancePlatformWebhooks.cs" />
     <Compile Include="Application\Features\AdyenWebhooks\PaymentWebhooks.cs" />
     <Compile Include="Application\Features\AdyenWebhooks\StandardWebhook.cs" />
     <Compile Include="Application\Features\BalancePlatform\AccountHolders.cs" />
@@ -270,6 +271,8 @@
     <Compile Include="Models\AdyenPayments\Common\ApiCommonError.cs" />
     <Compile Include="Models\AdyenPayments\Entity\RefundRequestSuccess.cs" />
     <Compile Include="Models\AdyenPayments\Entity\SuccessPaymentLog.cs" />
+    <Compile Include="Models\AdyenPayments\Entity\Webhook\AdyenBalanceAccountWebhook.cs" />
+    <Compile Include="Models\AdyenPayments\Entity\Webhook\AdyenAccountHolderWebhook.cs" />
     <Compile Include="Models\AdyenPayments\Entity\Webhook\RecurringContractLog.cs" />
     <Compile Include="Models\AdyenPayments\Entity\Webhook\StandardHookReceivedJson.cs" />
     <Compile Include="Models\AdyenPayments\LibraryRequests\PaymentMethodsReq.cs" />
@@ -290,6 +293,7 @@
     <Compile Include="Models\AdyenPayments\Response\RefundResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Adyen\SuccessPaymentLogRepository.cs" />
+    <Compile Include="Repository\Adyen\webhook\AdyenConfigurationWebhooksRepository.cs" />
     <Compile Include="Repository\Adyen\webhook\RecurringContractLogRepository.cs" />
     <Compile Include="Repository\Adyen\webhook\StandardWebhookRepository.cs" />
   </ItemGroup>

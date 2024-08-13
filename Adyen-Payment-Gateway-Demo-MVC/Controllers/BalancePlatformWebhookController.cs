@@ -1,16 +1,21 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Adyen.Util;
 using Adyen.Webhooks;
+using Adyen_Payment_Gateway_Demo_MVC.Application.Features.AdyenWebhooks;
+using Adyen_Payment_Gateway_Demo_MVC.Configuration;
 
 namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
 {
     public class BalancePlatformWebhookController : Controller
     {
-        private readonly BalancePlatformWebhookHandler _webhookHandler;
+        private readonly HmacValidator _hmacValidator;
+        private readonly string _hmacKey;
         public BalancePlatformWebhookController()
         {
-            _webhookHandler = new BalancePlatformWebhookHandler();
-
+            _hmacValidator = new HmacValidator();
+            _hmacKey = StaticVariablesConfig.GetAdyenHmacKey();
         }
 
         [HttpPost]
@@ -24,9 +29,13 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Controllers
                 {
                     requestBody = reader.ReadToEnd();
                 }
-                dynamic webhook = _webhookHandler.GetGenericBalancePlatformWebhook(requestBody);
 
-                System.Diagnostics.Debug.WriteLine(webhook);
+                //if (!_hmacValidator.IsValidHmac(container.NotificationItem, _hmacKey))
+                //{
+                //    return new HttpUnauthorizedResult();
+                //}
+
+                _ = new ReceiveBalancePlatformWebhooks().ReceiveBalancePlatformWebhook(requestBody);
 
                 return new HttpStatusCodeResult(200);
             }

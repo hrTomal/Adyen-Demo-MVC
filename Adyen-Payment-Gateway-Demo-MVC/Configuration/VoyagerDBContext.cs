@@ -11,5 +11,7 @@ namespace Adyen_Payment_Gateway_Demo_MVC.Configuration
         }
         public DbSet<RecurringContractLog> RecurringContractLogs { get; set; }
         public DbSet<StandardHookReceivedJson> StandardHookReceivedJsons { get; set; }
+        public DbSet<AdyenAccountHolderWebhook> AdyenAccountHolderWebhooks { get; set; }
+        public DbSet<AdyenBalanceAccountWebhook> AdyenBalanceAccountWebhooks { get; set; }
     }
 }
